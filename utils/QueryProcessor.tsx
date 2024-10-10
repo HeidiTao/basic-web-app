@@ -66,16 +66,31 @@ export default function QueryProcessor(query: string): string {
     return (x-y).toString();
   }}
 
-  const primeMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)?/)
-  if (primeMatch) {{
-    const numbers = query.match(/\d+(?:\s*,\s*\d+)*/g);
+  // const primeMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)?/)
+  // if (primeMatch) {{
+  //   const numbers = query.match(/\d+(?:\s*,\s*\d+)*/g);
+  //   let res = "";
+  //   if (numbers) for (let i=0; i<5; i++) {
+  //     const num = parseInt(numbers[i]);
+  //     if (isPrime(num)) res += num.toString();
+  //   }
+  //   return res;
+  // }}
+  const primeMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)\?/);
+  if (primeMatch) {
+    const numbers = query.match(/\d+/g);  // Match all individual numbers
     let res = "";
-    if (numbers) for (let i=0; i<7; i++) {
-      const num = parseInt(numbers[i]);
-      if (isPrime(num)) res += num.toString();
+    
+    if (numbers) {
+        for (let i = 0; i < numbers.length; i++) { // Loop through all matched numbers
+            const num = parseInt(numbers[i]);
+            if (isPrime(num)) {
+                res += num + ", "; // Append prime numbers to result with a space
+            }
+        }
     }
-    return res;
-  }}
+    return res.slice(0, -2);
+  }
 
   const powerMatch = query.match(/What is (\d+) to the power of (\d+)/);
   if (powerMatch) {{

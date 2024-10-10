@@ -58,7 +58,7 @@ describe("QueryProcessor", () => {
     })
     
     test('should find prime', () => {
-        expect(QueryProcessor("Which of the following numbers are primes: 33, 91, 19, 43, 77?")).toEqual("43");
+        expect(QueryProcessor("Which of the following numbers are primes: 33, 91, 19, 43, 77?")).toEqual("19, 43");
     })
 
     test('should find power', () => {
