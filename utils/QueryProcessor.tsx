@@ -99,5 +99,23 @@ export default function QueryProcessor(query: string): string {
     return (Math.pow(x,y)).toString();
   }}
 
+
+  const multPlusMatch = query.match(/What is (\d+) multiplied by (\d+) plus (\d+)?/);
+  if (multPlusMatch) {{
+    const x: number = parseInt(multPlusMatch[1]);
+    const y: number = parseInt(multPlusMatch[2]);
+    const z: number = parseInt(multPlusMatch[3]);
+    return ((x*y)+z).toString();
+  }}
+
+  const plusMultMatch = query.match(/What is (\d+) plus (\d+) multiplied by (\d+)?/);
+  if (plusMultMatch) {{
+    const x: number = parseInt(plusMultMatch[1]);
+    const y: number = parseInt(plusMultMatch[2]);
+    const z: number = parseInt(plusMultMatch[3]);
+    return (x+y*z).toString();
+  }}
+
+
   return "";
 }
