@@ -41,6 +41,18 @@ export default function QueryProcessor(query: string): string {
     }
     return res;
   }}
-  
+  const multMatch = query.match(/What is (\d+) multiplied by (\d+)/);
+  if (multMatch) {{
+    const x: number = parseInt(multMatch[1]);
+    const y: number = parseInt(multMatch[2]);
+    return (x*y).toString();
+  }}
+  const subMatch = query.match(/What is (\d+) minus (\d+)/);
+  if (subMatch) {{
+    const x: number = parseInt(subMatch[1]);
+    const y: number = parseInt(subMatch[2]);
+    return (x-y).toString();
+  }}
+
   return "";
 }

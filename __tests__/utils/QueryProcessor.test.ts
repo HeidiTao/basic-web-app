@@ -44,13 +44,17 @@ describe("QueryProcessor", () => {
         expect(QueryProcessor("Which of the following numbers is the largest: 31, 9, 83?")).toEqual("83");
     })
 
-    test('should find max', () => {
-        expect(QueryProcessor("Which of the following numbers is the largest: 10, 79, 32?")).toEqual("79");
-        expect(QueryProcessor("Which of the following numbers is the largest: 31, 9, 83?")).toEqual("83");
-    })
-
     test('should find sq and cube', () => {
         expect(QueryProcessor("Which of the following numbers is both a square and a cube: 4096, 521, 4955, 4487, 3121, 27, 1024?")).toBe("4096");
     })
 
+    test('should perform multiplication', () => {
+        expect(QueryProcessor("What is 96 multiplied by 35?")).toEqual("3360");
+    })
+
+    test('should perform subtracion', () => {
+        expect(QueryProcessor("What is 10 minus 89?")).toEqual("-79");
+        expect(QueryProcessor("What is 97 minus 48?")).toEqual("49");
+    })
+    
 });
