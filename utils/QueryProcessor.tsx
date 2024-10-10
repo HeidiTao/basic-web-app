@@ -29,7 +29,36 @@ export default function QueryProcessor(query: string): string {
       "Hiii;D"
     );
   }
-  const addMatch = query.match(/What is (\d+) plus (\d+)/);
+
+
+
+  const multPlusMatch = query.match(/What is (\d+) multiplied by (\d+) plus (\d+)?/);
+  if (multPlusMatch) {{
+    const x: number = parseInt(multPlusMatch[1]);
+    const y: number = parseInt(multPlusMatch[2]);
+    const z: number = parseInt(multPlusMatch[3]);
+    return ((x*y)+z).toString();
+  }}
+
+  const plusMultMatch = query.match(/What is (\d+) plus (\d+) multiplied by (\d+)?/);
+  if (plusMultMatch) {{
+    const x: number = parseInt(plusMultMatch[1]);
+    const y: number = parseInt(plusMultMatch[2]);
+    const z: number = parseInt(plusMultMatch[3]);
+    return (x+y*z).toString();
+  }}
+
+  const plusPlusMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)?/);
+  if (plusPlusMatch) {{
+    const x: number = parseInt(plusPlusMatch[1]);
+    const y: number = parseInt(plusPlusMatch[2]);
+    const z: number = parseInt(plusPlusMatch[3]);
+    return (x+y+z).toString();
+  }}
+
+
+  
+  const addMatch = query.match(/What is (\d+) plus (\d+)?/);
   if (addMatch) {{
     const x: number = parseInt(addMatch[1]);
     const y: number = parseInt(addMatch[2]);
@@ -53,13 +82,13 @@ export default function QueryProcessor(query: string): string {
     return res;
   }}
 
-  const multMatch = query.match(/What is (\d+) multiplied by (\d+)/);
+  const multMatch = query.match(/What is (\d+) multiplied by (\d+)?/);
   if (multMatch) {{
     const x: number = parseInt(multMatch[1]);
     const y: number = parseInt(multMatch[2]);
     return (x*y).toString();
   }}
-  const subMatch = query.match(/What is (\d+) minus (\d+)/);
+  const subMatch = query.match(/What is (\d+) minus (\d+)?/);
   if (subMatch) {{
     const x: number = parseInt(subMatch[1]);
     const y: number = parseInt(subMatch[2]);
@@ -100,29 +129,7 @@ export default function QueryProcessor(query: string): string {
   }}
 
 
-  const multPlusMatch = query.match(/What is (\d+) multiplied by (\d+) plus (\d+)?/);
-  if (multPlusMatch) {{
-    const x: number = parseInt(multPlusMatch[1]);
-    const y: number = parseInt(multPlusMatch[2]);
-    const z: number = parseInt(multPlusMatch[3]);
-    return ((x*y)+z).toString();
-  }}
-
-  const plusMultMatch = query.match(/What is (\d+) plus (\d+) multiplied by (\d+)?/);
-  if (plusMultMatch) {{
-    const x: number = parseInt(plusMultMatch[1]);
-    const y: number = parseInt(plusMultMatch[2]);
-    const z: number = parseInt(plusMultMatch[3]);
-    return (x+y*z).toString();
-  }}
-
-  const plusPlusMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)?/);
-  if (plusPlusMatch) {{
-    const x: number = parseInt(plusPlusMatch[1]);
-    const y: number = parseInt(plusPlusMatch[2]);
-    const z: number = parseInt(plusPlusMatch[3]);
-    return (x+y+z).toString();
-  }}
+  
 
   return "";
 }

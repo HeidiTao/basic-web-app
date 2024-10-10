@@ -64,4 +64,15 @@ describe("QueryProcessor", () => {
     test('should find power', () => {
         expect(QueryProcessor("What is 36 to the power of 3?")).toEqual("46656");
     })
+
+    test('should find plusmult', () => {
+        expect(QueryProcessor("What is 99 plus 48 multiplied by 75?")).toEqual("3699");
+    })
+    test('should find multplus', () => {
+        expect(QueryProcessor("What is 82 multiplied by 1 plus 81?")).toEqual("163");
+    })
+    test('should find plusplus', () => {
+        expect(QueryProcessor("What is 91 plus 95 plus 36?")).toEqual("222");
+    })
+
 });
