@@ -116,6 +116,13 @@ export default function QueryProcessor(query: string): string {
     return (x+y*z).toString();
   }}
 
+  const plusPlusMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)?/);
+  if (plusPlusMatch) {{
+    const x: number = parseInt(plusPlusMatch[1]);
+    const y: number = parseInt(plusPlusMatch[2]);
+    const z: number = parseInt(plusPlusMatch[3]);
+    return (x+y+z).toString();
+  }}
 
   return "";
 }
