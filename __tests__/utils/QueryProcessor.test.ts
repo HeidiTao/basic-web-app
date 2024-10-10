@@ -57,4 +57,11 @@ describe("QueryProcessor", () => {
         expect(QueryProcessor("What is 97 minus 48?")).toEqual("49");
     })
     
+    test('should find prime', () => {
+        expect(QueryProcessor("Which of the following numbers are primes: 33, 91, 19, 43, 77?")).toEqual("43");
+    })
+
+    test('should find power', () => {
+        expect(QueryProcessor("What is 36 to the power of 3?")).toEqual("46656");
+    })
 });

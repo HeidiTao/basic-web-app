@@ -1,4 +1,15 @@
 import { parse } from "path";
+function isPrime(num : number) {
+  // Check if num is less than 2
+  if (num <= 1) return false;
+  // Check for factors from 2 to the square root of num
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
+          return false;  // Found a factor, not prime
+      }
+  }
+  return true;  // No factors found, it's prime
+}
 
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
@@ -41,6 +52,7 @@ export default function QueryProcessor(query: string): string {
     }
     return res;
   }}
+
   const multMatch = query.match(/What is (\d+) multiplied by (\d+)/);
   if (multMatch) {{
     const x: number = parseInt(multMatch[1]);
@@ -52,6 +64,24 @@ export default function QueryProcessor(query: string): string {
     const x: number = parseInt(subMatch[1]);
     const y: number = parseInt(subMatch[2]);
     return (x-y).toString();
+  }}
+
+  const primeMatch = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)?/)
+  if (primeMatch) {{
+    const numbers = query.match(/\d+(?:\s*,\s*\d+)*/g);
+    let res = "";
+    if (numbers) for (let i=0; i<7; i++) {
+      const num = parseInt(numbers[i]);
+      if (isPrime(num)) res += num.toString();
+    }
+    return res;
+  }}
+
+  const powerMatch = query.match(/What is (\d+) to the power of (\d+)/);
+  if (powerMatch) {{
+    const x: number = parseInt(powerMatch[1]);
+    const y: number = parseInt(powerMatch[2]);
+    return (Math.pow(x,y)).toString();
   }}
 
   return "";
