@@ -31,5 +31,16 @@ export default function QueryProcessor(query: string): string {
     const z: number = parseInt(maxMatch[3]);
     return (Math.max(x, y, z)).toString();
   }}
+  const sqcbMatch = query.match(/Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)?/)
+  if (sqcbMatch) {{
+    const numbers = query.match(/\d+(?:\s*,\s*\d+)*/g);
+    let res = "";
+    if (numbers) for (let i=0; i<7; i++) {
+      const num = parseInt(numbers[i]);
+      if (Number.isInteger(Math.sqrt(num)) && Number.isInteger(Math.cbrt(num))) res += num.toString();
+    }
+    return res;
+  }}
+  
   return "";
 }
