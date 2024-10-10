@@ -11,6 +11,10 @@ export default function QueryProcessor(query: string): string {
       "I don't have one :sob:"
     );
   }
-
+  if (query.toLowerCase().includes("name")) {
+    return (
+      "Hiii;D"
+    );
+  }
   return "";
 }

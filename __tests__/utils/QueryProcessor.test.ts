@@ -25,4 +25,12 @@ describe("QueryProcessor", () => {
             "I don't have one :sob:"
         ));
     })
+
+    test('', () => {
+        const query = "What is your name?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "Hiii;D"
+        ));
+    })
 });
