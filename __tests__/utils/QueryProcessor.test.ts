@@ -26,11 +26,17 @@ describe("QueryProcessor", () => {
         ));
     })
 
-    test('', () => {
+    test('should return name', () => {
         const query = "What is your name?";
         const response: string = QueryProcessor(query);
         expect(response).toBe((
             "Hiii;D"
         ));
     })
+
+    test('should perform addition', () => {
+        expect(QueryProcessor("What is 5 plus 52?")).toEqual("57");
+        expect(QueryProcessor("What is 12 plus 1?")).toEqual("13");
+    })
+
 });
